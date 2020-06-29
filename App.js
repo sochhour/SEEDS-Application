@@ -9,9 +9,9 @@ import ListItem from './components/ListItem';
 const App = () => {
     const [items, setItems] = useState([
         {id: uuidv4(), text: 'Milk'},
-        {id: uuid(), text: 'Eggs'},
-        {id: uuid(), text: 'Bread'},
-        {id: uuid(), text: 'Juice'},
+        {id: uuidv4(), text: 'Eggs'},
+        {id: uuidv4(), text: 'Bread'},
+        {id: uuidv4(), text: 'Juice'},
     ]);
 
     const onChange  = (textValue) => setText(textValue);
@@ -24,7 +24,7 @@ const App = () => {
         }
         else {
             setItems(prevItems => {
-                return [{id: uuid(), text}, ...prevItems];
+                return [{id: uuidv4(), text}, ...prevItems];
             });
         }
     };
@@ -49,8 +49,7 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    }, 
-      
+    },   
 });
  
 export default App;
