@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "779468661947",
+    "firebase_url": "https://narwhals-f88c3.firebaseio.com",
+    "project_id": "narwhals-f88c3",
+    "storage_bucket": "narwhals-f88c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779468661947:android:5709a677ba7ddac246759e",
+        "android_client_info": {
+          "package_name": "com.narwhals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779468661947-if6l2tq9fa4oh5p960qeodl9ecb4cefq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWu7GdHpJHlYBh_P5RsICD3dfxXIso538"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779468661947-if6l2tq9fa4oh5p960qeodl9ecb4cefq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
