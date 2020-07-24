@@ -1,16 +1,23 @@
-import Firebase from '@react-native-firebase/app';
+import firebase from '@react-native-firebase/app';
 import database from '@react-native-firebase/database';
 
 let config = {
   apiKey: 'AIzaSyDWu7GdHpJHlYBh_P5RsICD3dfxXIso538',
-//   databaseURL: "https://narwhals-f88c3.firebaseio.com",
-  //authDomain: 'rnfirebXXX-XXXX.firebaseapp.com',
+  databaseURL: "https://narwhals-f88c3.firebaseio.com",
+  appId: '1:779468661947:android:5709a677ba7ddac246759e',
   projectId: 'narwhals-f88c3',
   storageBucket: 'narwhals-f88c3.appspot.com',
-  //messagingSenderId: 'XXXXXXX'
+  messagingSenderId: '779468661947',
+  //authDomain: 'rnfirebXXX-XXXX.firebaseapp.com',
 };
 
-export {firebase, database};
+// is this right? lol
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 
-let app = Firebase.initializeApp(config);
-export const db = app.database();
+export { firebase };
+
+// let app = firebase.initializeApp(config);
+// export const db = app.database();
+

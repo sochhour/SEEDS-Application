@@ -5,17 +5,15 @@ import { Platform, StyleSheet, View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {db} from './android/app/src/config';
 // just trying this
-import firebaseConfig from 'android/app/src/config.js'
+//import firebaseConfig from './android/app/src/config.js'
 
 import Home from './components/Home';
 import Info from "./components/Info";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
-
-//might be causing errors
-firebase.initializeApp(firebaseConfig);
 
 export default class App extends Component {
    

@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Button, SectionList } from 'react-native';
-import database from '@react-native-firebase/database';
-import Firebase from '@react-native-firebase/app';
-
-let config = {
-  apiKey: 'AIzaSyDWu7GdHpJHlYBh_P5RsICD3dfxXIso538',
-  databaseURL: "https://narwhals-f88c3.firebaseio.com",
-  //authDomain: 'rnfirebXXX-XXXX.firebaseapp.com',
-  projectId: 'narwhals-f88c3',
-  storageBucket: 'narwhals-f88c3.appspot.com',
-  //messagingSenderId: 'XXXXXXX'
-};
-
-const rootRef = Firebase.database().ref();
-const issueRef = rootRef.child('issues');
-
-// database()
-//   .ref('/Issue 1')
-//   .on('value', snapshot => {
-//     console.log('Issue 1 ', snapshot.val());
-//   });
+// import database from '@react-native-firebase/database';
+// import Firebase from '@react-native-firebase/app';
+import firebase from '../android/app/src/config';
  
 const sections = [
   {
     id: 0,
     title: 'Issues',
     data: [
-      // {id: 0, text: snapshot.val()},
+      {id: 0, text: 'Pollution'},
       {id: 1, text: 'Waste'},
       {id: 2, text: 'Carbon Emissions'},
     ]
@@ -45,23 +28,21 @@ const extractKey = ({id}) => id
 
 class Info extends Component {
 
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = ({
+        // local array of issues
         issues: []
       });
     }
 
+    // temp!!
     componentDidMount() {
-      issueRef.on('value', (childSnapshot) => {
-        const issues = [];
-        childSnapshot.forEach((doc) => {
-          issues.push({
-            key: doc.key,
-          });
-          this.setState({
-            issues: issues,
-          });
+      firebase.ref('/Issues').on('value', querySnapShot => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let issuesList = {...data};
+        this.setState({
+          issues: issuesList
         });
       });
     }
