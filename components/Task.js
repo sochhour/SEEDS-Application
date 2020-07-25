@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Button } from 'react-native';
  
 
-class Info extends Component {
+class Task extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.headerText}>Info Screen</Text>
-                <Button title="Go to Task Screen" onPress={() => this.props.navigation.navigate('Task')}/>
+                <Text style={styles.headerText}>Task Screen</Text>
             </View>
         )
     }
@@ -28,4 +27,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default Info;
+export default Task;
