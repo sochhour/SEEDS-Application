@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Button, SectionList } from 'react-native';
-// import database from '@react-native-firebase/database';
-// import Firebase from '@react-native-firebase/app';
-import firebase from '../android/app/src/config';
+import * as firebase from 'firebase';
+
+let config = {
+  apiKey: 'AIzaSyDWu7GdHpJHlYBh_P5RsICD3dfxXIso538',
+  databaseURL: "https://narwhals-f88c3.firebaseio.com",
+  appId: '1:779468661947:android:5709a677ba7ddac246759e',
+  projectId: 'narwhals-f88c3',
+  storageBucket: 'narwhals-f88c3.appspot.com',
+  messagingSenderId: '779468661947',
+  //authDomain: 'rnfirebXXX-XXXX.firebaseapp.com',
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+
+const database = firebase.database();
+
+console.log(database);
  
 const sections = [
   {
@@ -38,13 +54,18 @@ class Info extends Component {
 
     // temp!!
     componentDidMount() {
-      firebase.ref('/Issues').on('value', querySnapShot => {
-        let data = querySnapShot.val() ? querySnapShot.val() : {};
-        let issuesList = {...data};
-        this.setState({
-          issues: issuesList
-        });
-      });
+      // database.ref('/Issues').on('value', querySnapShot => {
+      //   let data = querySnapShot.val() ? querySnapShot.val() : {};
+      //   let issuesList = {...data};
+      //   this.setState({
+      //     issues: issuesList
+      //   });
+      // });
+      //console.log(issues);
+      console.log(database.ref().on('value', (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+      }));
     }
 
     renderItem = ({item}) => {

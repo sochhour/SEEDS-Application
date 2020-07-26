@@ -16,7 +16,7 @@ if (!firebase.apps.length) {
     firebase.initializeApp(config);
 }
 
-export { firebase };
+export { firebase as fb} ;
 
 // let app = firebase.initializeApp(config);
 // export const db = app.database();
