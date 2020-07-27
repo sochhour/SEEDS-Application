@@ -17,7 +17,6 @@ if (!firebase.apps.length) {
 }
 
 const database = firebase.database();
-
 console.log(database);
  
 const sections = [
@@ -46,52 +45,52 @@ class Info extends Component {
 
     constructor() {
       super();
-      this.state = ({
-        // local array of issues
-        issues: []
-      });
+      this.countryData = [];
     }
 
-    // temp!!
     componentDidMount() {
-      // database.ref('/Issues').on('value', querySnapShot => {
-      //   let data = querySnapShot.val() ? querySnapShot.val() : {};
-      //   let issuesList = {...data};
-      //   this.setState({
-      //     issues: issuesList
-      //   });
-      // });
-      //console.log(issues);
-      console.log(database.ref().on('value', (snapshot) => {
+      database.ref().on('value', (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
-      }));
+        let countryDict = data.Countries.UK;
+        console.log("countryDict = ", countryDict);
+
+        console.log("KEYS =", Object.keys(countryDict));
+        // Keys: CountryId, Issues, Organizations
+
+        let countryId = Object.values(countryDict)[0];
+        console.log("countryId = ", countryId);
+
+        this.countryData = Object.keys(countryDict).map((key) => {
+          return { header: key}
+        });
+        console.log("countryData", this.countryData)
+      })
     }
 
     renderItem = ({item}) => {
+      console.log("ITEM=", item)
       return (
         <Text style={styles.row}>
-          {item.text}
+          {item}
         </Text>
       )
     }
 
     renderSectionHeader = ({section}) => {
+      console.log("SECTION=", section)
       return (
         <Text style={styles.header}>
-          {section.title}
+          {section}
         </Text>
       )
     }
 
     render() {
         return (
-            
             <View style={styles.container}>
                 <Text style={styles.headerText}>Info Screen</Text>
                 <SectionList
-                  //style={styles.container}
-                  sections={sections}
+                  sections={this.countryData}
                   renderItem={this.renderItem}
                   renderSectionHeader={this.renderSectionHeader}
                   keyExtractor={extractKey}
