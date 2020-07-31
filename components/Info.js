@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
@@ -18,28 +18,28 @@ if (!firebase.apps.length) {
 
 const database = firebase.database();
 console.log(database);
- 
-const sections = [
+
+// From the documentation example ------------------------------
+const DATA = [
   {
-    id: 0,
-    title: 'Issues',
-    data: [
-      {id: 0, text: 'Pollution'},
-      {id: 1, text: 'Waste'},
-      {id: 2, text: 'Carbon Emissions'},
-    ]
+    title: "Main dishes",
+    data: ["Pizza", "Burger", "Risotto"]
   },
   {
-    id: 1,
-    title: 'Organizations',
-    data: [
-      {id: 3, text: 'Agency 1'},
-      {id: 4, text: 'Agency 2'},
-    ]
+    title: "Sides",
+    data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+  },
+  {
+    title: "Drinks",
+    data: ["Water", "Coke", "Beer"]
+  },
+  {
+    title: "Desserts",
+    data: ["Cheese Cake", "Ice Cream"]
   }
-]
+];
+// ---------------------------------------------------------------
 
-const extractKey = ({id}) => id
 
 class Info extends Component {
 
@@ -51,54 +51,68 @@ class Info extends Component {
     componentDidMount() {
       database.ref().on('value', (snapshot) => {
         const data = snapshot.val();
+
         let countryDict = data.Countries.UK;
         console.log("countryDict = ", countryDict);
 
-        console.log("KEYS =", Object.keys(countryDict));
-        // Keys: CountryId, Issues, Organizations
+        let keys = Object.keys(countryDict)
+        console.log("KEYS=", keys)
+        // keys = countryId, Issues, and Organizations
+        
+        // retrieve issues
+        let issues = Object.values(countryDict)[1];
+        console.log("ISSUES= ", issues);
 
-        let countryId = Object.values(countryDict)[0];
-        console.log("countryId = ", countryId);
+        // retrieve organizations
+        let organizations = Object.values(countryDict)[2];
+        console.log("ORGS = ", organizations)
 
-        this.countryData = Object.keys(countryDict).map((key) => {
-          return { header: key}
-        });
-        console.log("countryData", this.countryData)
+        this.countryData = keys.map((key) => {
+            return { title: key, data: [] }
+          });
+
+        console.log("countryData 1", this.countryData)
+        
+        // push issue strings to data structure
+        let id = 0;
+        for(let i = 0; i < Object.keys(issues).length; i++) {
+          this.countryData[0].data.push(Object.values(issues)[i])
+          id++;
+        }
+
+        // push organizations strings to data structure
+        for(let i = 0; i < Object.keys(organizations).length; i++) {
+          this.countryData[1].data.push(Object.values(organizations)[i])
+          id++;
+        }
+
+        console.log("countryData 2", this.countryData)
       })
     }
-
-    renderItem = ({item}) => {
-      console.log("ITEM=", item)
-      return (
-        <Text style={styles.row}>
-          {item}
-        </Text>
-      )
-    }
-
-    renderSectionHeader = ({section}) => {
-      console.log("SECTION=", section)
-      return (
-        <Text style={styles.header}>
-          {section}
-        </Text>
-      )
-    }
-
+    
     render() {
+
+      const Item = ({ title }) => (
+        <View style={styles.item}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      );
+      
         return (
-            <View style={styles.container}>
-                <Text style={styles.headerText}>Info Screen</Text>
-                <SectionList
-                  sections={this.countryData}
-                  renderItem={this.renderItem}
-                  renderSectionHeader={this.renderSectionHeader}
-                  keyExtractor={extractKey}
-                />
-            </View>
+          // From the documentation example ------------------------------
+          <SafeAreaView style={styles.container}>
+            <SectionList
+              sections={this.countryData}
+              keyExtractor={(item, index) => item + index}
+              renderItem={({ item }) => <Item title={item} />}
+              renderSectionHeader={({ section: { title } }) => (
+                <Text style={styles.header}>{title}</Text>
+              )}
+            />
+        </SafeAreaView>
+        // ---------------------------------------------------------------
         )
     }
-
 }
 
 const styles = StyleSheet.create({
@@ -115,12 +129,10 @@ const styles = StyleSheet.create({
     row: {
       padding: 15,
       marginBottom: 5,
-      //backgroundColor: 'skyblue',
     },
     header: {
       padding: 15,
       marginBottom: 5,
-      //backgroundColor: 'steelblue',
       color: 'black',
       fontWeight: 'bold',
     },
