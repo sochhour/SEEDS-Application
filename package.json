@@ -17,6 +17,7 @@
     "@react-navigation/native": "^5.7.2",
     "@react-navigation/stack": "^5.8.0",
     "firebase": "7.17.1",
+    "kill-9": "^0.4.3",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-gesture-handler": "^1.7.0",
