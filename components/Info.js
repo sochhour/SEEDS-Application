@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, route } from 'react-native';
 import * as firebase from 'firebase';
+
 let config = {
   apiKey: 'AIzaSyDWu7GdHpJHlYBh_P5RsICD3dfxXIso538',
   databaseURL: "https://narwhals-f88c3.firebaseio.com",
@@ -19,8 +20,13 @@ console.log(database);
 class Info extends Component {
     constructor() {
       super();
-      this.state = {data : []};
+      this.state = {
+        countryId: 0,
+        data : []
+      };
+      //countryId = this.props.route.params;
     }
+
     componentDidMount() {
       database.ref().once('value', (snapshot) => {
         const data = snapshot.val();
@@ -30,15 +36,15 @@ class Info extends Component {
         let headerData = [];
         headerData.push({
           title: "Country",
-          data: [Object.keys(countries)[0]]
+          data: [Object.keys(countries)[this.state.countryId]]
         });
         headerData.push({
           title: "Issues",
-          data: Object.values((Object.values(countries)[0]).Issues)
+          data: Object.values((Object.values(countries)[this.state.countryId]).Issues)
         });
         headerData.push({
           title: "Organizations",
-          data: Object.values((Object.values(countries)[0]).Organizations)
+          data: Object.values((Object.values(countries)[this.state.countryId]).Organizations)
         });
         this.setState(() => ({
            data: headerData
@@ -47,11 +53,15 @@ class Info extends Component {
     })
   }
     render() {
+
+      this.state.countryId = this.props.route.params.countryId;
+
       const Item = ({ title }) => (
         <View style={styles.item}>
           <Text style={styles.title}>{title}</Text>
         </View>
       );
+
         return (
           <SafeAreaView style={styles.container}>
             <SectionList
