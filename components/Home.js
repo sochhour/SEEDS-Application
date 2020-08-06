@@ -1,6 +1,6 @@
 
 import React from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Button, TouchableOpacity, ScrollView } from "react-native";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
@@ -12,6 +12,8 @@ import Spain from "./Spain";
 import Qatar from "./Qatar";
 import India from "./India";
 import USA from "./USA";
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 const DATA = [
   {
@@ -65,28 +67,31 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList contentContainerStyle={styles.layout}
-        ListHeaderComponent={
-        <>
-          <Image style={styles.topImage} source={require('../images/top.png')}/>
-          <Text style={styles.topText}>Explore</Text>
-          <Text style={styles.topText2}>To start, select a country</Text>
-        </>}
+        // ListHeaderComponent={
+        // <>
+        //   <Image style={styles.topImage} source={require('../images/top.png')}/>
+        //   <Text style={styles.topText}>Explore</Text>
+        //   <Text style={styles.topText2}>To start, select a country</Text>
+        // </>}
         data={DATA}
         keyExtractor={item => item.id}
         renderItem={renderItem}
-        ItemSeparatorComponent={
-          () => <View style={{ height: 20 }}/>
-        }
+        horizontal= {true}
+        // ItemSeparatorComponent={
+        //   () => <View style={{ height: 20 }}/>
+        // }
       />
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     //flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     backgroundColor: '#262223',
+    alignSelf: "flex-end",
   },
   topImage: {
     height: 400,
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   topText: {
-    color: '#DDC6B6',
+    color: 'white',//'#DDC6B6',
     top: 100,
     left: 260,
     zIndex: 3,
@@ -104,7 +109,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center'
   },
   topText2: {
-    color: '#DDC6B6',
+    color: 'white',//'#DDC6B6',
     top: 205,
     left: 262,
     zIndex: 3,
@@ -114,22 +119,23 @@ const styles = StyleSheet.create({
     //justifyContent: 'center'
   },
   country: {
-    width: 330,
-    height: 200,
+    width: screenWidth,
+    height: 300,
     //resizeMode: 'cover'
+    //resizeMode: 'contain'
   },
   countryName: {
-    color: '#DDC6B6',
+    color: 'white',//'#DDC6B6',
     top: 95,
     zIndex: 1,
     fontFamily: 'Times New Roman',
     fontSize: 75,
     position: 'absolute',
-    left: -50
   },
   layout: {
     alignItems: 'flex-end',
   }
 });
+
 
 export default App;
