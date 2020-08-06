@@ -1,3 +1,5 @@
+// USING GOOGLE AUTHENTICATION ------------------------------------------------------------------------------------
+
 // import React, { Component } from 'react';
 // import {
 //     GoogleSignin,
@@ -47,15 +49,23 @@
 // }
 // export default Login;
 
-import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
-//import styles from './style'
-export default class Login extends React.Component {
+// ------------------------------------------------------------------------------------------------------------------
+
+
+import React, { Component } from "react";
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import * as firebase from 'firebase';
+
+export default class Login extends Component {
   state = { email: '', password: '', errorMessage: null }
-  handleLogin = () => {
-    // TODO: Firebase stuff...
-    console.log('handleLogin')
-  }
+ handleLogin = () => {
+   firebase
+     .auth()
+     .signInWithEmailAndPassword(this.state.email, this.state.password)
+     .then(() => this.props.navigation.navigate('Home'))
+     .catch(error => this.setState({ errorMessage: error.message }))
+ }
+
   render() {
     return (
       <View style={styles.container}>
@@ -64,11 +74,10 @@ export default class Login extends React.Component {
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
-        <TextInput
-          style={styles.textInput}
+        <TextInput style={styles.textInput}
           autoCapitalize="none"
           placeholder="Email"
-          onChangeText={email => this.setState({ email })}
+          onChangeText={email=>this.setState({ email })}
           value={this.state.email}
         />
         <TextInput
@@ -76,7 +85,7 @@ export default class Login extends React.Component {
           style={styles.textInput}
           autoCapitalize="none"
           placeholder="Password"
-          onChangeText={password => this.setState({ password })}
+          onChangeText={password=>this.setState({ password })}
           value={this.state.password}
         />
         <Button title="Login" color="#e93766" onPress={this.handleLogin} />

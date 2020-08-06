@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity  } from 'react-native'
-import firebase from 'react-native-firebase';
-import styles from './style'
-import { onChange } from "react-native-reanimated";
+import { StyleSheet, Text, TextInput, View, Button, } from 'react-native'
+import * as firebase from 'firebase';
 
 export default class signUp extends Component {
   state = { email: '', password: '', errorMessage: null }
@@ -34,7 +32,6 @@ render() {
           placeholder="Password"
           autoCapitalize="none"
           style={styles.textInput}
-        //   onChangeText​={password=>this.setState({ password })}
           onChangeText={password=>this.setState({ password })}
           value={this.state.password}
         />
@@ -46,3 +43,20 @@ render() {
     )
   }
 }
+
+const styles = StyleSheet.create({
+container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textInput: {
+    height: 40,
+    fontSize:20,
+    width: '90%',
+    borderColor: '#9b9b9b',
+    borderBottomWidth: 1,
+    marginTop: 8,
+    marginVertical: 15
+  }
+})
