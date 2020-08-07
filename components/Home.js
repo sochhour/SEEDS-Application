@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   container: {
     //flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: '#262223',
+    backgroundColor: '#34495E',
     alignSelf: "flex-end",
   },
   topImage: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   country: {
     width: screenWidth,
-    height: 300,
+    height: '100%',
     //resizeMode: 'cover'
     //resizeMode: 'contain'
   },
