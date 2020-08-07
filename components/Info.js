@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, route } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
@@ -11,98 +11,71 @@ let config = {
   messagingSenderId: '779468661947',
   //authDomain: 'rnfirebXXX-XXXX.firebaseapp.com',
 };
-
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
-
 const database = firebase.database();
-
 console.log(database);
- 
-const sections = [
-  {
-    id: 0,
-    title: 'Issues',
-    data: [
-      {id: 0, text: 'Pollution'},
-      {id: 1, text: 'Waste'},
-      {id: 2, text: 'Carbon Emissions'},
-    ]
-  },
-  {
-    id: 1,
-    title: 'Organizations',
-    data: [
-      {id: 3, text: 'Agency 1'},
-      {id: 4, text: 'Agency 2'},
-    ]
-  }
-]
-
-const extractKey = ({id}) => id
 
 class Info extends Component {
-
     constructor() {
       super();
-      this.state = ({
-        // local array of issues
-        issues: []
-      });
+      this.state = {
+        countryId: 0,
+        data : []
+      };
+      //countryId = this.props.route.params;
     }
 
-    // temp!!
     componentDidMount() {
-      // database.ref('/Issues').on('value', querySnapShot => {
-      //   let data = querySnapShot.val() ? querySnapShot.val() : {};
-      //   let issuesList = {...data};
-      //   this.setState({
-      //     issues: issuesList
-      //   });
-      // });
-      //console.log(issues);
-      console.log(database.ref().on('value', (snapshot) => {
+      database.ref().once('value', (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
-      }));
-    }
-
-    renderItem = ({item}) => {
-      return (
-        <Text style={styles.row}>
-          {item.text}
-        </Text>
-      )
-    }
-
-    renderSectionHeader = ({section}) => {
-      return (
-        <Text style={styles.header}>
-          {section.title}
-        </Text>
-      )
-    }
-
+        // console.log(JSON.stringify(data));
+        const countries = data.Countries;
+        // console.log(JSON.stringify(countries));
+        let headerData = [];
+        headerData.push({
+          title: "Country",
+          data: [Object.keys(countries)[this.state.countryId]]
+        });
+        headerData.push({
+          title: "Issues",
+          data: Object.values((Object.values(countries)[this.state.countryId]).Issues)
+        });
+        headerData.push({
+          title: "Organizations",
+          data: Object.values((Object.values(countries)[this.state.countryId]).Organizations)
+        });
+        this.setState(() => ({
+           data: headerData
+        }));
+        console.log("headerData =", headerData)
+    })
+  }
     render() {
+
+      this.state.countryId = this.props.route.params.countryId;
+
+      const Item = ({ title }) => (
+        <View style={styles.item}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      );
+
         return (
-            
-            <View style={styles.container}>
-                <Text style={styles.headerText}>Info Screen</Text>
-                <Button title="Go to Task Screen" onPress={() => this.props.navigation.navigate('Task')}/>
-                <SectionList
-                  //style={styles.container}
-                  sections={sections}
-                  renderItem={this.renderItem}
-                  renderSectionHeader={this.renderSectionHeader}
-                  keyExtractor={extractKey}
-                />
-            </View>
+          <SafeAreaView style={styles.container}>
+            <SectionList
+              sections={this.state.data}
+              keyExtractor={(item, index) => item + index}
+              renderItem={({ item }) => <Item title={item} />}
+              renderSectionHeader={({ section: { title } }) => (
+                <Text style={styles.header}>{title}</Text>
+              )}
+            />
+        </SafeAreaView>
         )
     }
-
 }
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -117,16 +90,12 @@ const styles = StyleSheet.create({
     row: {
       padding: 15,
       marginBottom: 5,
-      //backgroundColor: 'skyblue',
     },
     header: {
       padding: 15,
       marginBottom: 5,
-      //backgroundColor: 'steelblue',
       color: 'black',
       fontWeight: 'bold',
     },
 });
-  
-
 export default Info;

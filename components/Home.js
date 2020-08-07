@@ -6,8 +6,8 @@ class Home extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.headerText}>Home Screen</Text>
-                <Button title="Go to Info Screen" onPress={() => this.props.navigation.navigate('Info')}/>
-
+                <Button title="----------- UK Info -----------" onPress={() => this.props.navigation.navigate('Info', {countryId: 0})}/>
+                <Button title="----------- US Info -----------" onPress={() => this.props.navigation.navigate('Info', {countryId: 1})}/>
             </View>
         )
     }
