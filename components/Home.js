@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   container: {
     //flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: '#E6B0AA',
+    backgroundColor: 'white',
     alignSelf: "flex-end",
   },
   country: {
