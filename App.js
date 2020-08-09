@@ -15,23 +15,16 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 export default class App extends Component {
-   
-    createHomeStack = () =>
-    <Stack.Navigator screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Info" component={Info} />
-        <Stack.Screen name="Task" component={Task} />
-    </Stack.Navigator>
 
     render() {
 
         return (
-            <NavigationContainer>
-                <Drawer.Navigator>
-                    <Drawer.Screen name="Home" children={this.createHomeStack}/>
-                    <Drawer.Screen name="Info" component={Info}/>
-                    <Drawer.Screen name="Task" component={Task}/>
-                </Drawer.Navigator>
+            <NavigationContainer> 
+                <Stack.Navigator headerMode={'none'} screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
+                    <Stack.Screen name="Home" component={Home} />
+                    <Stack.Screen name="Info" component={Info} />
+                    <Stack.Screen name="Task" component={Task} />
+                </Stack.Navigator>
             </NavigationContainer>
         );
     }
