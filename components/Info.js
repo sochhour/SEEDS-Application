@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Button } from 'react-native';
  
 
-class UK extends Component {
+class Info extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.headerText}>UK Screen</Text>
+                <Text style={styles.headerText}>Info Screen</Text>
             </View>
         )
     }
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default UK;
+export default Info;

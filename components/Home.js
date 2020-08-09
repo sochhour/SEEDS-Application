@@ -6,7 +6,7 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import UK from "./UK";
+import Info from "./Info";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
