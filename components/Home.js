@@ -6,35 +6,20 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import China from "./China";
 import UK from "./UK";
-import Spain from "./Spain";
-import Qatar from "./Qatar";
-import India from "./India";
-import USA from "./USA";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 const DATA = [
   {
     id: "0",
-    title: "China",
-    src: require('../images/china.png')
+    title: "USA",
+    src: require('../images/usa.png')
   },
   {
     id: "1",
     title: "UK",
-    src: require('../images/london.png')
-  },
-  {
-    id: "2",
-    title: "Spain",
-    src: require('../images/spain.png')
-  },
-  {
-    id: "3",
-    title: "Qatar",
-    src: require('../images/qatar.png')
+    src: require('../images/uk.png')
   },
   {
     id: "4",
@@ -43,8 +28,8 @@ const DATA = [
   },
   {
     id: "5",
-    title: "USA",
-    src: require('../images/usa.png')
+    title: "China",
+    src: require('../images/china.png')
   }
 ];
 
@@ -67,19 +52,10 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList contentContainerStyle={styles.layout}
-        // ListHeaderComponent={
-        // <>
-        //   <Image style={styles.topImage} source={require('../images/top.png')}/>
-        //   <Text style={styles.topText}>Explore</Text>
-        //   <Text style={styles.topText2}>To start, select a country</Text>
-        // </>}
         data={DATA}
         keyExtractor={item => item.id}
         renderItem={renderItem}
         horizontal= {true}
-        // ItemSeparatorComponent={
-        //   () => <View style={{ height: 20 }}/>
-        // }
       />
     </SafeAreaView>
   );
@@ -90,39 +66,12 @@ const styles = StyleSheet.create({
   container: {
     //flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: '#34495E',
+    backgroundColor: '#E6B0AA',
     alignSelf: "flex-end",
-  },
-  topImage: {
-    height: 400,
-    marginBottom: 20,
-    resizeMode: 'cover'
-  },
-  topText: {
-    color: 'white',//'#DDC6B6',
-    top: 100,
-    left: 260,
-    zIndex: 3,
-    fontFamily: 'Times New Roman',
-    fontSize: 110,
-    position: 'absolute',
-    //justifyContent: 'center'
-  },
-  topText2: {
-    color: 'white',//'#DDC6B6',
-    top: 205,
-    left: 262,
-    zIndex: 3,
-    fontFamily: 'Times New Roman',
-    fontSize: 35,
-    position: 'absolute',
-    //justifyContent: 'center'
   },
   country: {
     width: screenWidth,
     height: '100%',
-    //resizeMode: 'cover'
-    //resizeMode: 'contain'
   },
   countryName: {
     color: 'white',//'#DDC6B6',
