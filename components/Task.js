@@ -16,9 +16,11 @@ class Task extends Component {
     }
 
     toggleModal() {
-      this.setState({
-        modalIsVisible: !this.state.modalIsVisible
-      });
+      //if(this.state.lightToggle == true) {
+        this.setState({
+          modalIsVisible: !this.state.modalIsVisible
+        });
+    //}
     }
 
     render() {
@@ -51,11 +53,19 @@ class Task extends Component {
                 visible = {this.state.modalIsVisible}
                 onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
                   <View style={styles.modalContainer}>
+                  {this.state.lightToggle ?
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
                       <Text style={styles.modalText}>You've unlocked the next country: US!</Text>
                       <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home')}}/>
+                      </View>
+                    : 
+                    <View style={styles.modal}>
+                      <Text style={styles.headerText}>Try Again</Text>
+                      <Text style={styles.modalText}>Complete the current task to continue!</Text>
+                      <Button title="Retry" onPress={() => {this.toggleModal()}}/>
                     </View>
+                    }
                   </View>
                 </Modal>
 
