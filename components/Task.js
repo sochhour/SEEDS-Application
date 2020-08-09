@@ -50,7 +50,7 @@ class Task extends Component {
                 transparent = {true}
                 visible = {this.state.modalIsVisible}
                 onRequestClose = {() =>{ console.log("Modal has been closed.") } }>
-                  <View style={styles.container}>
+                  <View style={styles.modalContainer}>
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
                       <Text style={styles.modalText}>You've unlocked the next country: US!</Text>
@@ -93,6 +93,12 @@ const styles = StyleSheet.create({
       height: 200,
       backgroundColor: "green",
       marginTop: 60
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.4)'
     },
     modal: {
       margin: 20,
