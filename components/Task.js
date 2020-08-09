@@ -59,7 +59,7 @@ class Task extends Component {
                   </View>
                 </Modal>
 
-                <Button title="Complete the task" onPress={() => {this.setState({ modalIsVisible: true})}}/>
+                <Button title="Complete the task" onPress={() => {this.toggleModal()}}/>
             </View>
         )
     }
