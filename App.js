@@ -20,7 +20,6 @@ export default class App extends Component {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="UK" component={Info} />
         <Stack.Screen name="India" component={Info} />
-        <Stack.Screen name="Qatar" component={Info} />
         <Stack.Screen name="USA" component={Info} />
         <Stack.Screen name="China" component={Info} />
     </Stack.Navigator>
@@ -33,7 +32,6 @@ export default class App extends Component {
                     <Drawer.Screen name="Home" children={this.createHomeStack}/>
                     <Drawer.Screen name="UK" component={Info} />
                     <Drawer.Screen name="India" component={Info} />
-                    <Drawer.Screen name="Qatar" component={Info} />
                     <Drawer.Screen name="USA" component={Info} />
                     <Drawer.Screen name="China" component={Info}/>
                 </Drawer.Navigator>
