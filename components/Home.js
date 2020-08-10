@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   countryName: {
     color: 'white',
-    top: 85,
+    //top: 85,
     zIndex: 1,
     fontFamily: 'Times New Roman',
     fontSize: 150,
