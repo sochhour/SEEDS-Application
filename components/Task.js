@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
  
 
 class Task extends Component {
@@ -16,17 +16,21 @@ class Task extends Component {
     }
 
     toggleModal() {
-      //if(this.state.lightToggle == true) {
         this.setState({
           modalIsVisible: !this.state.modalIsVisible
         });
-    //}
     }
 
     render() {
-      const {toggle} = this.state;
         return (
             <View style={styles.container}>
+
+              <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
+                  <Image 
+                    source={require('../assets/png/left-arrow.png')}
+                    style={styles.arrow}
+                  />
+              </TouchableOpacity>
 
                 <Text style={styles.headerText}>Task: Let's save electricity!</Text>
                 <Text style={styles.situation}>You're about to leave your house to walk your dog after dinner. Before you go, </Text>
@@ -81,6 +85,12 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'white'
+    },
+    arrow: {
+      width: 45,
+      height: 45,
+      marginRight: 310,
+      marginTop: -90,
     },
     headerText: {
       fontSize: 30,

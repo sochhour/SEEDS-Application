@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList } from 'react-native';
+import { StyleSheet, View, Text, Button, SectionList, Image, TouchableOpacity } from 'react-native';
 
 const sections = [
   {
@@ -44,7 +44,16 @@ class Info extends Component {
     render() {
         return (
             <View style={styles.container}>
+
+              <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
+                <Image 
+                  source={require('../assets/png/left-arrow.png')}
+                  style={styles.arrow}
+                />
+              </TouchableOpacity>
+
                 <Text style={styles.headerText}>Info Screen</Text>
+
                 <SectionList
                   //style={styles.container}
                   sections={sections}
@@ -52,6 +61,7 @@ class Info extends Component {
                   renderSectionHeader={this.renderSectionHeader}
                   keyExtractor={extractKey}
                 />
+                
             </View>
         )
     }
@@ -61,7 +71,14 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: 'white'
+    },
+    arrow: {
+      width: 45,
+      height: 45,
+      marginRight: 310,
+      marginTop: 15,
     },
     headerText: {
       fontSize: 40,

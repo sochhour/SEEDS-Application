@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
  
 
 class Home extends Component {
