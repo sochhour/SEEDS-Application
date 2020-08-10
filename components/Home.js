@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   container: {
     //flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: 'white',
+    backgroundColor: 'lightskyblue',
     alignSelf: "flex-end",
   },
   country: {
@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Times New Roman',
     fontSize: 75,
     position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: "center"
   },
   layout: {
     alignItems: 'flex-end',
