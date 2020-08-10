@@ -75,13 +75,11 @@ const styles = StyleSheet.create({
   },
   countryName: {
     color: 'white',
-    top: 95,
+    top: 85,
     zIndex: 1,
     fontFamily: 'Times New Roman',
-    fontSize: 75,
+    fontSize: 150,
     position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
     alignSelf: "center"
   },
   layout: {
