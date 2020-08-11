@@ -8,7 +8,9 @@ class Home extends Component {
             <View style={styles.container}>
                 <Text style={styles.headerText}>Home Screen</Text>
                 <Button title="Go to Info Screen" onPress={() => this.props.navigation.navigate('Info')}/>
-                <Button title="Go to Task Screen" onPress={() => this.props.navigation.navigate('Task')}/>
+                <Button title="Go to Task 1" onPress={() => this.props.navigation.navigate('Task1')}/>
+                <Button title="Go to Task 2" onPress={() => this.props.navigation.navigate('Task2')}/>
+                <Button title="Go to Task 3" onPress={() => this.props.navigation.navigate('Task3')}/>
             </View>
         )
     }

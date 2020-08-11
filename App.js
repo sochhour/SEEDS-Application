@@ -8,8 +8,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Home from './components/Home';
 import Info from "./components/Info";
-import Task from "./components/Task";
-
+import Task1 from "./components/Task1";
+import Task2 from "./components/Task2";
+import Task3 from "./components/Task3";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -23,7 +24,9 @@ export default class App extends Component {
                 <Stack.Navigator headerMode={'none'} screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="Info" component={Info} />
-                    <Stack.Screen name="Task" component={Task} />
+                    <Stack.Screen name="Task1" component={Task1} />
+                    <Stack.Screen name="Task2" component={Task2} />
+                    <Stack.Screen name="Task3" component={Task3} />
                 </Stack.Navigator>
             </NavigationContainer>
         );

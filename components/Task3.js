@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
  
 
-class Task extends Component {
+class Task3 extends Component {
 
     state = {
       lightToggle: false,
@@ -32,21 +32,21 @@ class Task extends Component {
                   />
               </TouchableOpacity>
 
-                <Text style={styles.headerText}>Task: Let's save electricity!</Text>
-                <Text style={styles.situation}>You're about to leave your house to walk your dog after dinner. Before you go, </Text>
-                <Text style={styles.task}>let's turn off the lights!</Text>
+                <Text style={styles.headerText}>Task: Extend your phone's lifetime!</Text>
+                <Text style={styles.situation}> Leaving a phone pluggged in after it's fully charged damages its battery... </Text>
+                <Text style={styles.task}>Unplug your phone from that charger!</Text>
 
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/light-off.png')}
-                    style={{width: 200, height: 200, marginTop: 30, marginBottom: 30}}
+                    source={require('../assets/png/unplugged.png')}
+                    style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/light-on.png')}
-                    style={{width: 200, height: 200, marginTop: 30, marginBottom: 30}}
+                    source={require('../assets/png/plugged.png')}
+                    style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
                 </TouchableOpacity>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'white'
+      backgroundColor: '#F9F9ED'
     },
     arrow: {
       width: 45,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
       textAlign: "center",
     },
     task: {
-      fontSize: 30,
+      fontSize: 20,
       textAlign: "center",
       fontWeight: "bold",
     },
@@ -149,4 +149,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default Task;
+export default Task3;
