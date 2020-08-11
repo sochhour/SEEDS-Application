@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
- 
 
 class Home extends Component {
     render() {
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     headerText: {
       fontSize: 40,
       textAlign: "center",
-      margin: 10
+      margin: 10,
     },
   
   });
