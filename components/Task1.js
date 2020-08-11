@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'white'
+      backgroundColor: '#F9F9ED'
     },
     arrow: {
       width: 45,

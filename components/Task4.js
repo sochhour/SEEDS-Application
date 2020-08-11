@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
  
 
-class Task3 extends Component {
+class Task4 extends Component {
 
     state = {
       lightToggle: false,
@@ -32,20 +32,20 @@ class Task3 extends Component {
                   />
               </TouchableOpacity>
 
-                <Text style={styles.headerText}>Task: Reduce pollution!</Text>
-                <Text style={styles.situation}> Cars need a lot of fuel and emit harmful chemicals... </Text>
-                <Text style={styles.task}>Turn that car into a bicycle!</Text>
+                <Text style={styles.headerText}>Task: Save water!</Text>
+                <Text style={styles.situation}> The UK is on track to have a water shortage by 2050... </Text>
+                <Text style={styles.task}>Turn the water off!</Text>
 
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/bike.png')}
+                    source={require('../assets/png/water-off.png')}
                     style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/car.png')}
+                    source={require('../assets/png/water-on.png')}
                     style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
@@ -149,4 +149,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default Task3;
+export default Task4;
