@@ -60,7 +60,7 @@ class Task4 extends Component {
                   {this.state.lightToggle ?
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
-                      <Text style={styles.modalText}>You've unlocked the next country: US!</Text>
+                      <Text style={styles.modalText}>You've unlocked the next country: India!</Text>
                       <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home')}}/>
                       </View>
                     : 
