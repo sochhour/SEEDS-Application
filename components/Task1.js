@@ -40,13 +40,13 @@ class Task1 extends Component {
                   {this.state.lightToggle ? 
                   <Image 
                     source={require('../assets/png/light-off.png')}
-                    style={{width: 200, height: 200, marginTop: 30, marginBottom: 30}}
+                    style={{width: 200, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
                     source={require('../assets/png/light-on.png')}
-                    style={{width: 200, height: 200, marginTop: 30, marginBottom: 30}}
+                    style={{width: 200, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
                 </TouchableOpacity>
