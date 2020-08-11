@@ -32,21 +32,21 @@ class Task3 extends Component {
                   />
               </TouchableOpacity>
 
-                <Text style={styles.headerText}>Task: Extend your phone's lifetime!</Text>
-                <Text style={styles.situation}> Leaving a phone pluggged in after it's fully charged damages its battery... </Text>
-                <Text style={styles.task}>Unplug your phone from that charger!</Text>
+                <Text style={styles.headerText}>Task: Reduce pollution!</Text>
+                <Text style={styles.situation}> Cars need a lot of fuel and emit harmful chemicals... </Text>
+                <Text style={styles.task}>Turn that car into a bicycle!</Text>
 
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/unplugged.png')}
-                    style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
+                    source={require('../assets/png/car.png')}
+                    style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/plugged.png')}
-                    style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
+                    source={require('../assets/png/bike.png')}
+                    style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
                 </TouchableOpacity>
