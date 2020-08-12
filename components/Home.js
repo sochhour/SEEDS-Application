@@ -58,6 +58,7 @@ const App = () => {
         horizontal= {true}
       />
       <TouchableOpacity style={styles.infoButton} onPress={() => navigation.navigate('UK', {countryId: 0})}>
+        <Text style={{bottom: 0}}>Info Screen</Text>
         {/* <Image 
           source={require('../images/info-button.png')}
           style={{width: 100, height: 100, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}  
