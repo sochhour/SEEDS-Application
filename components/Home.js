@@ -14,22 +14,22 @@ const DATA = [
   {
     id: "0",
     title: "USA",
-    src: require('../images/usa.png')
+    src: require('../images/usa-buttons.png')
   },
   {
     id: "1",
     title: "UK",
-    src: require('../images/uk.png')
+    src: require('../images/uk-buttons.png')
   },
   {
     id: "4",
     title: "India",
-    src: require('../images/india.png')
+    src: require('../images/india-buttons.png')
   },
   {
     id: "5",
     title: "China",
-    src: require('../images/china.png')
+    src: require('../images/china-buttons.png')
   }
 ];
 
@@ -43,10 +43,10 @@ const App = () => {
   const navigation = useNavigation() 
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity title={item.title} onPress={() => navigation.navigate(item.title, {countryId: 0})}>
+    <View title={item.title} >
       <Text style={styles.countryName}>{item.title}</Text>
       <Image source={item.src} style={styles.country}/>
-    </TouchableOpacity>
+    </View>
   );
 
   return (
@@ -57,6 +57,19 @@ const App = () => {
         renderItem={renderItem}
         horizontal= {true}
       />
+      <TouchableOpacity style={styles.infoButton} onPress={() => navigation.navigate('UK', {countryId: 0})}>
+        {/* <Image 
+          source={require('../images/info-button.png')}
+          style={{width: 100, height: 100, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}  
+        /> */}
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.taskButton} >
+        {/* <Image 
+            source={require('../images/task-button.png')}
+            style={{width: 100, height: 100, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}  
+          /> */}
+      </TouchableOpacity>
+
     </SafeAreaView>
   );
 }
@@ -84,6 +97,19 @@ const styles = StyleSheet.create({
   },
   layout: {
     alignItems: 'flex-end',
+  },
+  infoButton: {
+    top: 390,
+    position: 'absolute',
+    zIndex: 3,
+    elevation: 3,
+  },
+  taskButton: {
+    top: 420,
+    left: 300,
+    position: 'absolute',
+    zIndex: 3,
+    elevation: 3,
   }
 });
 
