@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: 'white',
     top: 350,
     zIndex: 2,
-    fontFamily: 'Times New Roman',
+    //fontFamily: 'Times New Roman',
     fontSize: 150,
     position: 'absolute',
     alignSelf: "center"
