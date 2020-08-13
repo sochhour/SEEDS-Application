@@ -55,10 +55,16 @@ const App = () => {
     <View title={item.title}>
       <Image source={item.src} style={styles.country}/>
       <Text style={styles.countryName}>{item.title}</Text>
-      <Image source={item.task} style={getTaskStyles(item.title)}/>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Task1')}>
+        <Image source={item.task} style={getTaskStyles(item.title)}/> 
+      </TouchableOpacity>
+
+
       <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: item.id})}>
         <Image source={item.info} style={styles.infoButton}/>
       </TouchableOpacity>
+
     </View>
   );
 
