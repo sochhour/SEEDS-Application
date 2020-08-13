@@ -27,7 +27,7 @@ class Task1 extends Component {
 
               <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
                   <Image 
-                    source={require('../assets/png/left-arrow.png')}
+                    source={require('../images/left-arrow.png')}
                     style={styles.arrow}
                   />
               </TouchableOpacity>
