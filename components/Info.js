@@ -64,6 +64,14 @@ class Info extends Component {
 
         return (
           <SafeAreaView style={styles.container}>
+
+             <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
+                <Image 
+                  source={require('../assets/png/left-arrow.png')}
+                  style={styles.arrow}
+                />
+              </TouchableOpacity>
+
             <SectionList
               sections={this.state.data}
               keyExtractor={(item, index) => item + index}
@@ -81,6 +89,12 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
+    },
+    arrow: {
+      width: 45,
+      height: 45,
+      marginRight: 310,
+      marginTop: 50,
     },
     headerText: {
       fontSize: 40,
