@@ -53,14 +53,29 @@ const App = () => {
 
   const renderItem = ({ item }) => (
     <View title={item.title}>
-      <Text style={styles.countryName}>{item.title}</Text>
       <Image source={item.src} style={styles.country}/>
+      <Text style={styles.countryName}>{item.title}</Text>
+      <Image source={item.task} style={getTaskStyles(item.title)}/>
       <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: 0})}>
-        <Image source={item.info} style={styles.infoButton}  />
+        <Image source={item.info} style={styles.infoButton}/>
       </TouchableOpacity>
-      <Image source={item.task} style={styles.taskButton}  />
     </View>
   );
+
+  const getTaskStyles = (name) => {
+    if(name == 'USA') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 250, bottom: 35 }
+    }
+    if(name == 'UK') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 265, bottom: 320 }
+    }
+    if(name == 'India') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 90, bottom: 345,}
+    }
+    if(name == 'China') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 90, bottom: 70 }
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -77,22 +92,19 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    //marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'lightskyblue',
     alignSelf: "flex-end",
     zIndex: 0,
   },
   country: {
-    top: 320,
+    top: 220,
     width: screenWidth,
-    // height: '100%',
     height: screenHeight,
     zIndex: 0,
   },
   countryName: {
-    color: 'black',
-    //top: 85,
+    color: 'white',
+    top: 350,
     zIndex: 2,
     fontFamily: 'Times New Roman',
     fontSize: 150,
@@ -104,25 +116,13 @@ const styles = StyleSheet.create({
     zIndex: 0
   },
   infoButton: {
-    //top: 390,
     zIndex: 1,
     width: 100, 
     height: 100, 
     resizeMode: 'contain', 
-    marginTop: 30, 
+    marginLeft: 15, 
     marginBottom: 30
   },
-  taskButton: {
-    // top: 420,
-    // left: 300,
-
-    zIndex: 1,
-    width: 100, 
-    height: 100, 
-    resizeMode: 'contain', 
-    marginTop: 30, 
-    marginBottom: 30
-  }
 });
 
 export default App;
