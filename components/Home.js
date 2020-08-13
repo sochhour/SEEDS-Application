@@ -1,6 +1,6 @@
 
 import React from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ImageBackground, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
@@ -9,27 +9,36 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Info from "./Info";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const DATA = [
   {
     id: "0",
     title: "USA",
-    src: require('../images/usa.png')
+    src: require('../images/usa.png'),
+    info: require('../images/info-button.png'),
+    task: require('../images/task-button.png')
   },
   {
     id: "1",
     title: "UK",
-    src: require('../images/uk.png')
+    src: require('../images/uk.png'),
+    info: require('../images/info-button.png'),
+    task: require('../images/task-button.png')
   },
   {
     id: "4",
     title: "India",
-    src: require('../images/india.png')
+    src: require('../images/india.png'),
+    info: require('../images/info-button.png'),
+    task: require('../images/task-button.png')
   },
   {
     id: "5",
     title: "China",
-    src: require('../images/china.png')
+    src: require('../images/china.png'),
+    info: require('../images/info-button.png'),
+    task: require('../images/task-button.png')
   }
 ];
 
@@ -43,11 +52,30 @@ const App = () => {
   const navigation = useNavigation() 
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity title={item.title} onPress={() => navigation.navigate(item.title, {countryId: 0})}>
-      <Text style={styles.countryName}>{item.title}</Text>
+    <View title={item.title}>
       <Image source={item.src} style={styles.country}/>
-    </TouchableOpacity>
+      <Text style={styles.countryName}>{item.title}</Text>
+      <Image source={item.task} style={getTaskStyles(item.title)}/>
+      <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: 0})}>
+        <Image source={item.info} style={styles.infoButton}/>
+      </TouchableOpacity>
+    </View>
   );
+
+  const getTaskStyles = (name) => {
+    if(name == 'USA') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 250, bottom: 35 }
+    }
+    if(name == 'UK') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 265, bottom: 320 }
+    }
+    if(name == 'India') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 90, bottom: 345,}
+    }
+    if(name == 'China') {
+      return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 90, bottom: 70 }
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,19 +92,20 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'lightskyblue',
     alignSelf: "flex-end",
+    zIndex: 0,
   },
   country: {
+    top: 220,
     width: screenWidth,
-    height: '100%',
+    height: screenHeight,
+    zIndex: 0,
   },
   countryName: {
     color: 'white',
-    //top: 85,
-    zIndex: 1,
+    top: 350,
+    zIndex: 2,
     fontFamily: 'Times New Roman',
     fontSize: 150,
     position: 'absolute',
@@ -84,7 +113,16 @@ const styles = StyleSheet.create({
   },
   layout: {
     alignItems: 'flex-end',
-  }
+    zIndex: 0
+  },
+  infoButton: {
+    zIndex: 1,
+    width: 100, 
+    height: 100, 
+    resizeMode: 'contain', 
+    marginLeft: 15, 
+    marginBottom: 30
+  },
 });
 
 export default App;

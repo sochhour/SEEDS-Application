@@ -19,7 +19,7 @@ const Stack = createStackNavigator();
 export default class App extends Component {
    
     createHomeStack = () =>
-    <Stack.Navigator screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
+    <Stack.Navigator headerMode={'none'} screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
         <Stack.Screen name="SignUp" component={signUp} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
