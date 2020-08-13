@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
       width: 45,
       height: 45,
       marginRight: 310,
-      marginTop: 15,
+      marginTop: 50,
     },
     headerText: {
       fontSize: 40,

@@ -32,9 +32,9 @@ class Task1 extends Component {
                   />
               </TouchableOpacity>
 
-                <Text style={styles.headerText}>Task: Let's save electricity!</Text>
-                <Text style={styles.situation}>You're about to leave your house to walk your dog after dinner. Before you go, </Text>
-                <Text style={styles.task}>let's turn off the lights!</Text>
+                <Text style={styles.headerText}>Task: Save electricity!</Text>
+                <Text style={styles.situation}>Using energy increases the amount of damaging fossil fuels in our earth's atmosphere...</Text>
+                <Text style={styles.task}>Turn off the lights!</Text>
 
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
       width: 45,
       height: 45,
       marginRight: 310,
-      marginTop: -90,
+      marginTop: -180,
     },
     headerText: {
       fontSize: 30,
@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
     situation: {
       fontSize: 20,
       marginTop: 20,
-      marginLeft: 10,
-      marginRight: 10,
+      marginLeft: 15,
+      marginRight: 15,
       textAlign: "center",
     },
     task: {
-      fontSize: 30,
+      fontSize: 20,
       textAlign: "center",
       fontWeight: "bold",
     },

@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
       width: 45,
       height: 45,
       marginRight: 310,
-      marginTop: -90,
+      marginTop: -160,
     },
     headerText: {
       fontSize: 30,
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     situation: {
       fontSize: 20,
       marginTop: 20,
-      marginLeft: 10,
-      marginRight: 10,
+      marginLeft: 15,
+      marginRight: 15,
       textAlign: "center",
     },
     task: {
