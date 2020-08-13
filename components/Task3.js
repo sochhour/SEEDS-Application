@@ -27,7 +27,7 @@ class Task3 extends Component {
 
               <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
                   <Image 
-                    source={require('../assets/png/left-arrow.png')}
+                    source={require('../images/left-arrow.png')}
                     style={styles.arrow}
                   />
               </TouchableOpacity>
@@ -39,13 +39,13 @@ class Task3 extends Component {
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/bike.png')}
+                    source={require('../images/bike.png')}
                     style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/car.png')}
+                    source={require('../images/car.png')}
                     style={{width: 250, height: 250, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}

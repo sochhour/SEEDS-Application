@@ -17,28 +17,32 @@ const DATA = [
     title: "USA",
     src: require('../images/usa.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task1"
   },
   {
     id: "2",
     title: "UK",
     src: require('../images/uk.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task2"
   },
   {
     id: "1",
     title: "India",
     src: require('../images/india.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task3"
   },
   {
     id: "0",
     title: "China",
     src: require('../images/china.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task4"
   }
 ];
 
@@ -56,7 +60,7 @@ const App = () => {
       <Image source={item.src} style={styles.country}/>
       <Text style={styles.countryName}>{item.title}</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Task1')}>
+      <TouchableOpacity onPress={() => navigation.navigate(item.taskNav)}>
         <Image source={item.task} style={getTaskStyles(item.title)}/> 
       </TouchableOpacity>
 

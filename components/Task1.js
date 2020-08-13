@@ -39,13 +39,13 @@ class Task1 extends Component {
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/light-off.png')}
+                    source={require('../images/light-off.png')}
                     style={{width: 200, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/light-on.png')}
+                    source={require('../images/light-on.png')}
                     style={{width: 200, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
@@ -60,7 +60,7 @@ class Task1 extends Component {
                   {this.state.lightToggle ?
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
-                      <Text style={styles.modalText}>You've unlocked the next country: US!</Text>
+                      <Text style={styles.modalText}>You've unlocked the next country: UK!</Text>
                       <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home')}}/>
                       </View>
                     : 

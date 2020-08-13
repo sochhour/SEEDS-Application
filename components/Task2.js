@@ -27,7 +27,7 @@ class Task2 extends Component {
 
               <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
                   <Image 
-                    source={require('../assets/png/left-arrow.png')}
+                    source={require('../images/left-arrow.png')}
                     style={styles.arrow}
                   />
               </TouchableOpacity>
@@ -39,13 +39,13 @@ class Task2 extends Component {
                 <TouchableOpacity activeOpacity={1} onPress={() => this.toggleLight()}>
                   {this.state.lightToggle ? 
                   <Image 
-                    source={require('../assets/png/unplugged.png')}
+                    source={require('../images/unplugged.png')}
                     style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />
                   :
                   <Image 
-                    source={require('../assets/png/plugged.png')}
+                    source={require('../images/plugged.png')}
                     style={{width: 100, height: 200, resizeMode: 'contain', marginTop: 30, marginBottom: 30}}
                     
                   />}
@@ -60,7 +60,7 @@ class Task2 extends Component {
                   {this.state.lightToggle ?
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
-                      <Text style={styles.modalText}>You've unlocked the next country: UK!</Text>
+                      <Text style={styles.modalText}>You've unlocked the next country: India!</Text>
                       <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home')}}/>
                       </View>
                     : 
