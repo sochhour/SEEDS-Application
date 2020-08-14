@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ImageBackground, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Info from "./Info";
+// import Info from "./Info";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -55,14 +55,15 @@ const Item = ({ src }) => (
   </View>
 );
 
-const App = () => {
+const Home = () => {
+
   state = {
     locked: [false, true, true, true]
   }
 
-  const navigation = useNavigation() 
+  navigation = useNavigation() 
 
-  const renderItem = ({ item }) => (
+  renderItem = ({ item }) => (
     <View title={item.title}>
       {this.state.locked[item.order] ? 
       <>
@@ -85,7 +86,7 @@ const App = () => {
           <Image source={item.task} style={getTaskStyles(item.title)}/> 
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: item.id})}>
+        <TouchableOpacity onPress={() => navigation.navigate('USA', {countryId: item.id})}>
           <Image source={item.info} style={styles.infoButton}/>
         </TouchableOpacity>
       </>
@@ -94,7 +95,7 @@ const App = () => {
     </View>
   );
 
-  const getTaskStyles = (name) => {
+  getTaskStyles = (name) => {
     if(name == 'USA') {
       return { zIndex: 1, width: 100, height: 100, resizeMode: 'contain', left: 250, bottom: 35 }
     }
@@ -109,16 +110,21 @@ const App = () => {
     }
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList contentContainerStyle={styles.layout}
-        data={DATA}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-        horizontal= {true}
-      />
-    </SafeAreaView>
-  );
+  // index = this.props.route.params.index;
+  // console.log("index=", index);
+  // locked = this.props.route.params.locked;
+  // console.log("locked=", locked)
+
+    return (
+      <SafeAreaView style={styles.container}>
+        <FlatList contentContainerStyle={styles.layout}
+          data={DATA}
+          keyExtractor={item => item.id}
+          renderItem={renderItem}
+          horizontal= {true}
+        />
+      </SafeAreaView>
+    );
 }
 
 
@@ -167,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Home;

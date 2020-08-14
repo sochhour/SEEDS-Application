@@ -61,7 +61,7 @@ class Task1 extends Component {
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
                       <Text style={styles.modalText}>You've unlocked the next country: UK!</Text>
-                      <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home')}}/>
+                      <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home', {index: 1, locked: false})}}/>
                       </View>
                     : 
                     <View style={styles.modal}>
