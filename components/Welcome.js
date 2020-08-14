@@ -72,7 +72,7 @@ export default class App extends Component {
         style={styles.container}
         flex={1}
       >
-        <ScrollView
+        <Animated.ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={10}
@@ -87,14 +87,14 @@ export default class App extends Component {
 
           {imageArray}
 
-        </ScrollView>
+        </Animated.ScrollView>
         <View
           style={styles.barContainer}
         >
           {barArray}
         </View>
 
-        <Button title="Skip" color='#FFF3F0' onPress={() => this.props.navigation.navigate('Home')}/>
+        <Button title="SKIP" color='#FFF3F0' onPress={() => this.props.navigation.navigate('Home')}/>
       </View>
     )
   }
