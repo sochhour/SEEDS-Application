@@ -65,7 +65,7 @@ export default class Home extends Component {
       {this.state.locked[item.order] ? 
       <>
         <Image source={item.src} style={styles.country} blurRadius={15}/>
-        <Text style={styles.countryNameLocked}>{item.title}</Text>
+        {/* <Text style={styles.countryNameLocked}>{item.title}</Text> */}
 
         <Image 
           source={require('../images/lock.png')}
