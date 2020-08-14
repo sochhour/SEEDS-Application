@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, route, TouchableOpacity, Image } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
