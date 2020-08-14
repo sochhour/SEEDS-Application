@@ -1,4 +1,3 @@
-
 import React from "react";
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ImageBackground, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 
@@ -13,6 +12,7 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const DATA = [
   {
+    order: "0",
     id: "3",
     title: "USA",
     src: require('../images/usa.png'),
@@ -21,6 +21,7 @@ const DATA = [
     taskNav: "Task1"
   },
   {
+    order: "1",
     id: "2",
     title: "UK",
     src: require('../images/uk.png'),
@@ -29,6 +30,7 @@ const DATA = [
     taskNav: "Task2"
   },
   {
+    order: "2",
     id: "1",
     title: "India",
     src: require('../images/india.png'),
@@ -37,6 +39,7 @@ const DATA = [
     taskNav: "Task3"
   },
   {
+    order: "3",
     id: "0",
     title: "China",
     src: require('../images/china.png'),
@@ -53,21 +56,40 @@ const Item = ({ src }) => (
 );
 
 const App = () => {
+  state = {
+    locked: [false, true, true, true]
+  }
+
   const navigation = useNavigation() 
 
   const renderItem = ({ item }) => (
     <View title={item.title}>
-      <Image source={item.src} style={styles.country}/>
-      <Text style={styles.countryName}>{item.title}</Text>
+      {this.state.locked[item.order] ? 
+      <>
+        <Image source={item.src} style={styles.country} blurRadius={15}/>
+        <Text style={styles.countryNameLocked}>{item.title}</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate(item.taskNav)}>
-        <Image source={item.task} style={getTaskStyles(item.title)}/> 
-      </TouchableOpacity>
+        <Image 
+          source={require('../images/lock.png')}
+          style={{width: 200, height: 200, resizeMode: 'contain', alignSelf: 'center', bottom: 300}}
+        />
+      </>
 
+        :
 
-      <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: item.id})}>
-        <Image source={item.info} style={styles.infoButton}/>
-      </TouchableOpacity>
+      <>
+        <Image source={item.src} style={styles.country}/>
+        <Text style={styles.countryName}>{item.title}</Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate(item.taskNav)}>
+          <Image source={item.task} style={getTaskStyles(item.title)}/> 
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: item.id})}>
+          <Image source={item.info} style={styles.infoButton}/>
+        </TouchableOpacity>
+      </>
+      }
 
     </View>
   );
@@ -107,7 +129,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   country: {
-    top: 220,
+    top: 225,
     width: screenWidth,
     height: screenHeight,
     zIndex: 0,
@@ -115,6 +137,16 @@ const styles = StyleSheet.create({
   countryName: {
     color: 'white',
     top: 350,
+    zIndex: 2,
+    //fontFamily: 'Times New Roman',
+    fontSize: 150,
+    position: 'absolute',
+    alignSelf: "center"
+  },
+  countryNameLocked: {
+    color: 'white',
+    top: 320,
+    //top: 550,
     zIndex: 2,
     //fontFamily: 'Times New Roman',
     fontSize: 150,
