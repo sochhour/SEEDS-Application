@@ -13,32 +13,36 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const DATA = [
   {
-    id: "0",
+    id: "3",
     title: "USA",
     src: require('../images/usa.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task1"
   },
   {
-    id: "1",
+    id: "2",
     title: "UK",
     src: require('../images/uk.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task2"
   },
   {
-    id: "4",
+    id: "1",
     title: "India",
     src: require('../images/india.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task3"
   },
   {
-    id: "5",
+    id: "0",
     title: "China",
     src: require('../images/china.png'),
     info: require('../images/info-button.png'),
-    task: require('../images/task-button.png')
+    task: require('../images/task-button.png'),
+    taskNav: "Task4"
   }
 ];
 
@@ -55,10 +59,16 @@ const App = () => {
     <View title={item.title}>
       <Image source={item.src} style={styles.country}/>
       <Text style={styles.countryName}>{item.title}</Text>
-      <Image source={item.task} style={getTaskStyles(item.title)}/>
-      <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: 0})}>
+
+      <TouchableOpacity onPress={() => navigation.navigate(item.taskNav)}>
+        <Image source={item.task} style={getTaskStyles(item.title)}/> 
+      </TouchableOpacity>
+
+
+      <TouchableOpacity onPress={() => navigation.navigate('UK', {countryId: item.id})}>
         <Image source={item.info} style={styles.infoButton}/>
       </TouchableOpacity>
+
     </View>
   );
 
@@ -106,7 +116,7 @@ const styles = StyleSheet.create({
     color: 'white',
     top: 350,
     zIndex: 2,
-    fontFamily: 'Times New Roman',
+    //fontFamily: 'Times New Roman',
     fontSize: 150,
     position: 'absolute',
     alignSelf: "center"

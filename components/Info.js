@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, route } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, route, TouchableOpacity, Image } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
@@ -33,6 +33,8 @@ class Info extends Component {
         // console.log(JSON.stringify(data));
         const countries = data.Countries;
         // console.log(JSON.stringify(countries));
+        console.log("countryId=", this.state.countryId)
+        console.log([Object.keys(countries)]);
         let headerData = [];
         headerData.push({
           title: "Country",
@@ -64,6 +66,14 @@ class Info extends Component {
 
         return (
           <SafeAreaView style={styles.container}>
+
+             <TouchableOpacity onPress={() => {this.props.navigation.navigate('Home'); console.log("PRESSED BACK BUTTON")}}>
+                <Image 
+                  source={require('../images/left-arrow.png')}
+                  style={styles.arrow}
+                />
+              </TouchableOpacity>
+
             <SectionList
               sections={this.state.data}
               keyExtractor={(item, index) => item + index}
@@ -81,6 +91,12 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
+    },
+    arrow: {
+      width: 45,
+      height: 45,
+      marginRight: 310,
+      marginTop: 50,
     },
     headerText: {
       fontSize: 40,
