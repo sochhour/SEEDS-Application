@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   barContainer: {
     position: 'absolute',
     zIndex: 2,
-    top: 60,
+    top: 80,
     flexDirection: 'row',
   },
   track: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   skip: {
-    bottom: 70,
+    bottom: 50,
   },
   button: {
       color: 'black',
