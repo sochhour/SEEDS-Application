@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ImageBackground, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Button, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-// import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-// import { createDrawerNavigator } from '@react-navigation/drawer';
-
-// import Info from "./Info";
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -49,13 +45,14 @@ const DATA = [
   }
 ];
 
-const Item = ({ src }) => (
-  <View>
-    <Image style={styles.country}/>
-  </View>
-);
+// const Item = ({ src }) => (
+//   <View>
+//     <Image style={styles.country}/>
+//   </View>
+// );
 
 const Home = () => {
+//export default class Home extends Component {
 
   state = {
     locked: [false, true, true, true]
@@ -115,16 +112,18 @@ const Home = () => {
   // locked = this.props.route.params.locked;
   // console.log("locked=", locked)
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <FlatList contentContainerStyle={styles.layout}
-          data={DATA}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-          horizontal= {true}
-        />
-      </SafeAreaView>
-    );
+    // render () {
+      return (
+        <SafeAreaView style={styles.container}>
+          <FlatList contentContainerStyle={styles.layout}
+            data={DATA}
+            keyExtractor={item => item.id}
+            renderItem={renderItem}
+            horizontal= {true}
+          />
+        </SafeAreaView>
+      );
+    //}
 }
 
 
