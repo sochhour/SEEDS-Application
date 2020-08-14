@@ -94,7 +94,7 @@ export default class App extends Component {
           {barArray}
         </View>
 
-        <Button title="SKIP" color='#FFF3F0' onPress={() => this.props.navigation.navigate('Home')}/>
+        <Button title="SKIP" color='#FFF3F0' onPress={() => this.props.navigation.navigate('Home', {index: 0, locked: false})}/>
       </View>
     )
   }

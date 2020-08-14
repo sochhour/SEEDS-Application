@@ -51,14 +51,14 @@ const DATA = [
 //   </View>
 // );
 
-const Home = () => {
-//export default class Home extends Component {
+// const Home = () => {
+export default class Home extends Component {
 
   state = {
     locked: [false, true, true, true]
   }
 
-  navigation = useNavigation() 
+  //navigation = useNavigation() 
 
   renderItem = ({ item }) => (
     <View title={item.title}>
@@ -79,11 +79,11 @@ const Home = () => {
         <Image source={item.src} style={styles.country}/>
         <Text style={styles.countryName}>{item.title}</Text>
 
-        <TouchableOpacity onPress={() => navigation.navigate(item.taskNav)}>
-          <Image source={item.task} style={getTaskStyles(item.title)}/> 
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(item.taskNav)}>
+          <Image source={item.task} style={this.getTaskStyles(item.title)}/> 
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('USA', {countryId: item.id})}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('USA', {countryId: item.id})}>
           <Image source={item.info} style={styles.infoButton}/>
         </TouchableOpacity>
       </>
@@ -107,23 +107,24 @@ const Home = () => {
     }
   }
 
-  // index = this.props.route.params.index;
-  // console.log("index=", index);
-  // locked = this.props.route.params.locked;
-  // console.log("locked=", locked)
+    render () {
+      index = this.props.route.params.index;
+      console.log("index=", index);
+      this.state.locked[index] = this.props.route.params.locked;
+     // console.log("locked=", locked)
 
-    // render () {
       return (
         <SafeAreaView style={styles.container}>
           <FlatList contentContainerStyle={styles.layout}
             data={DATA}
             keyExtractor={item => item.id}
-            renderItem={renderItem}
+            renderItem={this.renderItem}
             horizontal= {true}
           />
         </SafeAreaView>
       );
     //}
+  }
 }
 
 
@@ -172,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+//export default Home;
