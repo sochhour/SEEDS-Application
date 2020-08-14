@@ -15,9 +15,9 @@ export default class signUp extends Component {
 render() {
     return (
       <View style={styles.container}>
-      <Text style={{color:'#e93766', fontSize: 40}}>Sign Up</Text>
+      <Text style={{color:'#FDF5E6', fontSize: 40}}>Sign Up</Text>
         {this.state.errorMessage &&
-          <Text style={{ color: 'red' }}>
+          <Text style={{ color: '#FDF5E6' }}>
             {this.state.errorMessage}
           </Text>}
         <TextInput
@@ -35,9 +35,9 @@ render() {
           onChangeText={password=>this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Sign Up" color="#e93766" onPress={this.handleSignUp}/>
+        <Button title="Sign Up" color="#FDF5E6" onPress={this.handleSignUp}/>
         <View>
-        <Text> Already have an account? <Text onPress={() => this.props.navigation.navigate('Login')} style={{color:'#e93766', fontSize: 18}}> Login </Text></Text>
+        <Text color='#292E47'> Already have an account? <Text onPress={() => this.props.navigation.navigate('Login')} style={{color:'#FDF5E6', fontSize: 18}}> Login </Text></Text>
         </View>
       </View>
     )
@@ -48,13 +48,14 @@ const styles = StyleSheet.create({
 container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#D5B9B2'
   },
   textInput: {
     height: 40,
     fontSize:20,
     width: '90%',
-    borderColor: '#9b9b9b',
+    borderColor: '#FDF5E6',
     borderBottomWidth: 1,
     marginTop: 8,
     marginVertical: 15

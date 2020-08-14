@@ -94,7 +94,9 @@ export default class App extends Component {
           {barArray}
         </View>
 
+        <View style={styles.skip}>
         <Button title="SKIP" color='#FFF3F0' onPress={() => this.props.navigation.navigate('Home', {index: 0, locked: false})}/>
+        </View>
       </View>
     )
   }
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
   barContainer: {
     position: 'absolute',
     zIndex: 2,
-    top: 40,
+    top: 60,
     flexDirection: 'row',
   },
   track: {
@@ -125,6 +127,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
+  },
+  skip: {
+    bottom: 70,
   },
   button: {
       color: 'black',
