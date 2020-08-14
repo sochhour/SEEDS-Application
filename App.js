@@ -9,6 +9,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Login from "./components/Login";
 import Loading from './components/Loading';
+import Welcome from './components/Welcome';
 import signUp from './components/SignUp';
 import Home from './components/Home';
 import Info from "./components/Info";
@@ -26,6 +27,7 @@ export default class App extends Component {
     <Stack.Navigator headerMode={'none'} screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
         <Stack.Screen name="SignUp" component={signUp} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="UK" component={Info} />
         <Stack.Screen name="India" component={Info} />
