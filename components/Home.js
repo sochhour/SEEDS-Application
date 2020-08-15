@@ -120,6 +120,7 @@ export default class Home extends Component {
             keyExtractor={item => item.id}
             renderItem={this.renderItem}
             horizontal= {true}
+            showsHorizontalScrollIndicator={false}
           />
         </SafeAreaView>
       );
