@@ -25,9 +25,9 @@ export default class App extends Component {
    
     createHomeStack = () =>
     <Stack.Navigator headerMode={'none'} screenOptions={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
-        <Stack.Screen name="Loading" component={Loading} />
-        <Stack.Screen name="SignUp" component={signUp} />
-        <Stack.Screen name="Login" component={Login} />
+        {/* <Stack.Screen name="Loading" component={Loading} /> */}
+        {/* <Stack.Screen name="SignUp" component={signUp} />
+        <Stack.Screen name="Login" component={Login} /> */}
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="UK" component={Info} />
