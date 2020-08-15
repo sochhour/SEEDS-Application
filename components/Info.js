@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, TouchableOpacity, Image, Linking } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
@@ -17,6 +17,15 @@ if (!firebase.apps.length) {
 const database = firebase.database();
 console.log(database);
 
+const orgLinks = {
+  'Sierra Club': 'https://www.sierraclub.org/', 
+  'Environmental Defense Fund':'https://www.edf.org/', 
+  'World Wildlife Fund':'https://www.worldwildlife.org/',
+  'Carbon Disclosure Project (CDP)':'https://www.cdp.net/en',
+  'Stop Climate Chaos Coalition':'https://www.stopclimatechaos.scot/',
+  'Young Peoples Trust For The Environment (YPTE)':'https://ypte.org.uk/'
+};
+
 class Info extends Component {
     constructor() {
       super();
@@ -24,7 +33,6 @@ class Info extends Component {
         countryId: 0,
         data : []
       };
-      //countryId = this.props.route.params;
     }
 
     componentDidMount() {
@@ -36,31 +44,52 @@ class Info extends Component {
         console.log("countryId=", this.state.countryId)
         console.log([Object.keys(countries)]);
         let headerData = [];
+        // headerData.push({
+        //   title: "Country",
+        //   data: [Object.keys(countries)[this.state.countryId]]
+        // });
         headerData.push({
-          title: "Country",
-          data: [Object.keys(countries)[this.state.countryId]]
-        });
-        headerData.push({
-          title: "Issues",
+          title: "Environmental Issues",
           data: Object.values((Object.values(countries)[this.state.countryId]).Issues)
         });
         headerData.push({
-          title: "Organizations",
+          title: "Learn More!",
+          data: Object.values((Object.values(countries)[this.state.countryId]).IssuesInfo)
+        });
+        headerData.push({
+          title: "Non-profit Organizations",
           data: Object.values((Object.values(countries)[this.state.countryId]).Organizations)
         });
+        // headerData.push({
+        //   title: "OrgLinks",
+        //   data: Object.values((Object.values(countries)[this.state.countryId]).OrgLinks)
+        // });
         this.setState(() => ({
            data: headerData
         }));
         console.log("headerData =", headerData)
     })
   }
+
+
     render() {
 
       this.state.countryId = this.props.route.params.countryId;
 
-      const Item = ({ title }) => (
+      console.log("data=", this.state.data[0]);
+
+      const Item = ({ title, section, index }) => (
         <View style={styles.item}>
-          <Text style={styles.title}>{title}</Text>
+          {section.title == 'Environmental Issues' ?
+          <Text style={styles.title}>❗     {title}</Text>
+          :
+          section.title == 'Learn More!' ?
+          <Text style={styles.title}>💡     {title}</Text>
+          :
+          <TouchableOpacity onPress={() => Linking.openURL(orgLinks[title])}>
+            <Text style={styles.title}>📣     {title}</Text>
+          </TouchableOpacity>
+          }
         </View>
       );
 
@@ -77,9 +106,11 @@ class Info extends Component {
             <SectionList
               sections={this.state.data}
               keyExtractor={(item, index) => item + index}
-              renderItem={({ item }) => <Item title={item} />}
+              renderItem={({ item, section, index }) => <Item title={item} section={section} index={index}/>}
               renderSectionHeader={({ section: { title } }) => (
-                <Text style={styles.header}>{title}</Text>
+                <View>
+                  <Text style={styles.header}>{title}</Text>
+                </View>
               )}
             />
         </SafeAreaView>
@@ -91,7 +122,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#FFF3F0'
+      backgroundColor: '#FFF3F0',
     },
     arrow: {
       width: 45,
@@ -99,23 +130,28 @@ const styles = StyleSheet.create({
       marginRight: 310,
       marginTop: 50,
     },
-    headerText: {
-      fontSize: 40,
-      textAlign: "center",
-      margin: 10
-    },
-    row: {
-      padding: 15,
-      marginBottom: 5,
-    },
     header: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
       padding: 15,
       marginBottom: 5,
       color: '#292E47',//'black',
       fontWeight: 'bold',
+      fontSize: 30
+    },
+    item: {
+      flex: 1,
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom: 20,
+      fontSize: 20,
     },
     title: {
-      color: '#292E47'
+      flex: 1,
+      justifyContent: 'center',
+      fontSize: 20,
     }
 });
 export default Info;
