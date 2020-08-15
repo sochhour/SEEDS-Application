@@ -35,7 +35,7 @@ render() {
           onChangeText={password=>this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Sign Up" color="#FDF5E6" onPress={this.handleSignUp}/>
+        <Button title="Sign Up" color="#B95255" onPress={this.handleSignUp}/>
         <View>
         <Text color='#292E47'> Already have an account? <Text onPress={() => this.props.navigation.navigate('Login')} style={{color:'#FDF5E6', fontSize: 18}}> Login </Text></Text>
         </View>
@@ -55,7 +55,7 @@ container: {
     height: 40,
     fontSize:20,
     width: '90%',
-    borderColor: '#FDF5E6',
+    borderColor: '#B95255',
     borderBottomWidth: 1,
     marginTop: 8,
     marginVertical: 15
