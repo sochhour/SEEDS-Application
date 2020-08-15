@@ -49,11 +49,15 @@ class Info extends Component {
         //   data: [Object.keys(countries)[this.state.countryId]]
         // });
         headerData.push({
-          title: "Issues",
+          title: "Environmental Issues",
           data: Object.values((Object.values(countries)[this.state.countryId]).Issues)
         });
         headerData.push({
-          title: "Organizations",
+          title: "Learn More!",
+          data: Object.values((Object.values(countries)[this.state.countryId]).IssuesInfo)
+        });
+        headerData.push({
+          title: "Non-profit Organizations",
           data: Object.values((Object.values(countries)[this.state.countryId]).Organizations)
         });
         // headerData.push({
@@ -76,14 +80,14 @@ class Info extends Component {
 
       const Item = ({ title, section, index }) => (
         <View style={styles.item}>
-          {section.title == 'OrgLinks' ?
-          null
+          {section.title == 'Environmental Issues' ?
+          <Text style={styles.title}>❗     {title}</Text>
           :
-          section.title == 'Issues' ?
-          <Text style={styles.title}>• {title}</Text>
+          section.title == 'Learn More!' ?
+          <Text style={styles.title}>💡     {title}</Text>
           :
           <TouchableOpacity onPress={() => Linking.openURL(orgLinks[title])}>
-            <Text>{title}</Text>
+            <Text style={styles.title}>📣     {title}</Text>
           </TouchableOpacity>
           }
         </View>
@@ -99,19 +103,13 @@ class Info extends Component {
                 />
               </TouchableOpacity>
 
-              <Text>What's happening here?</Text>
-
             <SectionList
               sections={this.state.data}
               keyExtractor={(item, index) => item + index}
               renderItem={({ item, section, index }) => <Item title={item} section={section} index={index}/>}
               renderSectionHeader={({ section: { title } }) => (
                 <View>
-                  {title == "OrgLinks" ?
-                  null 
-                  :
                   <Text style={styles.header}>{title}</Text>
-                }
                 </View>
               )}
             />
@@ -124,7 +122,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#FFF3F0'
+      backgroundColor: '#FFF3F0',
     },
     arrow: {
       width: 45,
@@ -141,19 +139,19 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       color: '#292E47',//'black',
       fontWeight: 'bold',
+      fontSize: 30
     },
     item: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       marginLeft: 20,
-      marginRight: 20
+      marginRight: 20,
+      marginBottom: 20,
+      fontSize: 20,
     },
     title: {
       flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      color: '#292E47'
+      justifyContent: 'center',
+      fontSize: 20,
     }
 });
 export default Info;
