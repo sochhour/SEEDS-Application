@@ -17,9 +17,14 @@ if (!firebase.apps.length) {
 const database = firebase.database();
 console.log(database);
 
-const orgLinks = [
-  'https://www.sierraclub.org/', 'https://www.edf.org/', 'https://www.worldwildlife.org/'
-];
+const orgLinks = {
+  'Sierra Club': 'https://www.sierraclub.org/', 
+  'Environmental Defense Fund':'https://www.edf.org/', 
+  'World Wildlife Fund':'https://www.worldwildlife.org/',
+  'Carbon Disclosure Project (CDP)':'https://www.cdp.net/en',
+  'Stop Climate Chaos Coalition':'https://www.stopclimatechaos.scot/',
+  'Young Peoples Trust For The Environment (YPTE)':'https://ypte.org.uk/'
+};
 
 class Info extends Component {
     constructor() {
@@ -51,10 +56,10 @@ class Info extends Component {
           title: "Organizations",
           data: Object.values((Object.values(countries)[this.state.countryId]).Organizations)
         });
-        headerData.push({
-          title: "OrgLinks",
-          data: Object.values((Object.values(countries)[this.state.countryId]).OrgLinks)
-        });
+        // headerData.push({
+        //   title: "OrgLinks",
+        //   data: Object.values((Object.values(countries)[this.state.countryId]).OrgLinks)
+        // });
         this.setState(() => ({
            data: headerData
         }));
@@ -77,7 +82,7 @@ class Info extends Component {
           section.title == 'Issues' ?
           <Text style={styles.title}>• {title}</Text>
           :
-          <TouchableOpacity onPress={() => Linking.openURL(orgLinks[index])}>
+          <TouchableOpacity onPress={() => Linking.openURL(orgLinks[title])}>
             <Text>{title}</Text>
           </TouchableOpacity>
           }
