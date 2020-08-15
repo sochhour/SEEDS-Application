@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, TouchableOpacity, Image, Linking } from 'react-native';
+import { Platform, StyleSheet, View, Text, Button, SectionList, SafeAreaView, TouchableOpacity, Image, Linking, ScrollView } from 'react-native';
 import * as firebase from 'firebase';
 
 let config = {
@@ -108,10 +108,11 @@ class Info extends Component {
               keyExtractor={(item, index) => item + index}
               renderItem={({ item, section, index }) => <Item title={item} section={section} index={index}/>}
               renderSectionHeader={({ section: { title } }) => (
-                <View>
-                  <Text style={styles.header}>{title}</Text>
+                <View style={{flex:1}}>
+                    <Text style={styles.header}>{title}</Text>
                 </View>
               )}
+              stickySectionHeadersEnabled={false}
             />
         </SafeAreaView>
         )
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
       width: 45,
       height: 45,
       marginRight: 310,
-      marginTop: 50,
+      marginTop: 0,
     },
     header: {
       flex: 1,
