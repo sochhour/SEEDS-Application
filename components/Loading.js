@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Image, ActivityIndicator, StyleSheet } from 'react-native';
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import Login from "./Login";
@@ -18,8 +18,10 @@ export default class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color:'#e93766', fontSize: 40}}>Loading</Text>
-        <ActivityIndicator color='#e93766' size="large" />
+        <Image source={require('../images/globeTrotter.png')}/>
+        <Text style={{color:'#FFF3F0', fontSize: 40}}>Globe Trotter</Text>
+        {/* <Text style={{color:'#FFF3F0', fontSize: 40}}>Loading</Text> */}
+        <ActivityIndicator color='#FFF3F0' size="large" />
       </View>
     )
   }
@@ -29,5 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#D5B9B2'
   }
 });
