@@ -61,19 +61,19 @@ class Task3 extends Component {
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Congrats!</Text>
                       <Text style={styles.modalText}>You've unlocked the next country: China!</Text>
-                      <Button title="Let's go home" onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home', {index: 3, locked: false})}}/>
+                      <Button title="Let's go home" color='#B95255' onPress={() => {this.toggleModal(); this.props.navigation.navigate('Home', {index: 3, locked: false})}}/>
                       </View>
                     : 
                     <View style={styles.modal}>
                       <Text style={styles.headerText}>Try Again</Text>
                       <Text style={styles.modalText}>Complete the current task to continue!</Text>
-                      <Button title="Retry" onPress={() => {this.toggleModal()}}/>
+                      <Button title="Retry" color='#B95255' onPress={() => {this.toggleModal()}}/>
                     </View>
                     }
                   </View>
                 </Modal>
 
-                <Button color='#292E47' title="Complete the task" onPress={() => {this.toggleModal()}}/>
+                <Button color='#B95255' title="Complete the task" onPress={() => {this.toggleModal()}}/>
             </View>
         )
     }
