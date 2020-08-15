@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   countryName: {
-    color: 'white',
+    color: '#FFF3F0',
     top: 350,
     zIndex: 2,
     //fontFamily: 'Times New Roman',

@@ -73,7 +73,7 @@ class Task4 extends Component {
                   </View>
                 </Modal>
 
-                <Button title="Complete the task" onPress={() => {this.toggleModal()}}/>
+                <Button color='#292E47' title="Complete the task" onPress={() => {this.toggleModal()}}/>
             </View>
         )
     }
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F9F9ED'
+      backgroundColor: '#FFF3F0'
     },
     arrow: {
       width: 45,
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     headerText: {
       fontSize: 30,
       textAlign: "center",
+      color: '#292E47'
       //marginTop: 50,
     },
     situation: {
@@ -103,11 +104,14 @@ const styles = StyleSheet.create({
       marginLeft: 15,
       marginRight: 15,
       textAlign: "center",
+      color: '#292E47',
+      marginBottom: 20
     },
     task: {
       fontSize: 20,
       textAlign: "center",
       fontWeight: "bold",
+      color: '#292E47'
     },
     image: {
       width:200,

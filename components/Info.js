@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#FFF3F0'
     },
     arrow: {
       width: 45,
@@ -110,8 +111,11 @@ const styles = StyleSheet.create({
     header: {
       padding: 15,
       marginBottom: 5,
-      color: 'black',
+      color: '#292E47',//'black',
       fontWeight: 'bold',
     },
+    title: {
+      color: '#292E47'
+    }
 });
 export default Info;
