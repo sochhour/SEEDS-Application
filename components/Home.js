@@ -23,7 +23,7 @@ const DATA = [
     src: require('../images/uk.png'),
     info: require('../images/info-button.png'),
     task: require('../images/task-button.png'),
-    taskNav: "Task2"
+    taskNav: "Task4"
   },
   {
     order: "2",
@@ -41,24 +41,15 @@ const DATA = [
     src: require('../images/china.png'),
     info: require('../images/info-button.png'),
     task: require('../images/task-button.png'),
-    taskNav: "Task4"
+    taskNav: "Task2"
   }
 ];
 
-// const Item = ({ src }) => (
-//   <View>
-//     <Image style={styles.country}/>
-//   </View>
-// );
-
-// const Home = () => {
 export default class Home extends Component {
 
   state = {
     locked: [false, true, true, true]
   }
-
-  //navigation = useNavigation() 
 
   renderItem = ({ item }) => (
     <View title={item.title}>
@@ -111,7 +102,6 @@ export default class Home extends Component {
       index = this.props.route.params.index;
       console.log("index=", index);
       this.state.locked[index] = this.props.route.params.locked;
-     // console.log("locked=", locked)
 
       return (
         <SafeAreaView style={styles.container}>
@@ -124,7 +114,6 @@ export default class Home extends Component {
           />
         </SafeAreaView>
       );
-    //}
   }
 }
 
@@ -174,4 +163,3 @@ const styles = StyleSheet.create({
   },
 });
 
-//export default Home;
