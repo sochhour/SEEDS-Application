@@ -53,7 +53,7 @@
 
 
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Image } from 'react-native';
 import * as firebase from 'firebase';
 
 export default class Login extends Component {
@@ -69,6 +69,8 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image source={require('../images/globeTrotter.png')} style={{width: 106, height: 120, bottom: 10}}/>
+        <Text style={{color:'#B95255', fontSize: 40, marginBottom: 40}}>GlobeTrotter</Text>
         <Text style={{color:'#FFF3F0', fontSize: 40}}>Login</Text>
         {this.state.errorMessage &&
           <Text style={{ color: '#FFF3F0' }}>
@@ -102,7 +104,8 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#D5B9B2'
+    backgroundColor: '#D5B9B2',
+    marginTop: -150,
   },
   textInput: {
     height: 40,
